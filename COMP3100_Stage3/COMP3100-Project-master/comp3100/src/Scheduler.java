@@ -115,7 +115,7 @@ public class Scheduler{
                     ok();
                     msg = readFromStream();
                                         
-                    int cumFit = 1000000;
+                    float cumFit = Interger.MAX_VALUE;
                     boolean found= false;
                     
                     ServerInfo server1 = null;
@@ -126,11 +126,11 @@ public class Scheduler{
                                 server = getServerInfo(msg);
                                 
                                    int coreFit = Integer.parseInt(server.coreCount) -Integer.parseInt(job.cores);
-                                   int memFit =  Integer.parseInt(server.memory) -Integer.parseInt(job.memory);
+                                   float memFit =  Integer.parseInt(server.memory) -Integer.parseInt(job.memory);
                                     
                                 //if(Integer.parseInt(server.availableTime) == Integer.parseInt(job.submitTime)){
                                 if(coreFit >= 0 && memFit >= 0){
-                                    int newFit = coreFit + memFit;
+                                    float newFit = coreFit + memFit;
                                             if(cumFit > newFit){
                                             found = true;
                                             cumFit = newFit;
@@ -180,7 +180,7 @@ public class Scheduler{
                     ok();
                     msg = readFromStream();
                                         
-                    int cumFit = 1000000;
+                    float cumFit = Integer.MAX_VALUE;
                     boolean found= false;
                     
                     ServerInfo server1 = null;
@@ -191,10 +191,10 @@ public class Scheduler{
                             server = getServerInfo(msg);
                              if(Integer.parseInt(server.availableTime) >= Integer.parseInt(job.estRunTime) && Integer.parseInt(server.state) != -1){
                                    int coreFit = Integer.parseInt(server.coreCount) -Integer.parseInt(job.cores);
-                                   int memFit =  Integer.parseInt(server.memory) -Integer.parseInt(job.memory);
+                                   float memFit =  Integer.parseInt(server.memory) -Integer.parseInt(job.memory);
                                     
                                 if(coreFit >= 0 && memFit >= 0){
-                                    int newFit = coreFit + memFit;
+                                    float newFit = coreFit + memFit;
                                             if(cumFit > newFit){
                                             found = true;
                                             cumFit = newFit;
@@ -244,7 +244,7 @@ public class Scheduler{
                     ok();
                     msg = readFromStream();
                                         
-                    int cumFit = 1000000;
+                    float cumFit = Integer.MAX_VALUE;
                     
                     boolean found= false;
                     
@@ -256,11 +256,11 @@ public class Scheduler{
                             server = getServerInfo(msg);
                             if(Integer.parseInt(server.state) != -1 ){
                                    int coreFit = Integer.parseInt(server.coreCount) -Integer.parseInt(job.cores);
-                                   int memFit =  Integer.parseInt(server.memory) -Integer.parseInt(job.memory);
+                                   float memFit =  Integer.parseInt(server.memory) -Integer.parseInt(job.memory);
                                     
                                     
                                 if(coreFit >= 0 && memFit >= 0){
-                                    int newFit = coreFit + memFit;
+                                    float newFit = coreFit + memFit;
                                             if(cumFit > newFit){
                                             found = true;
                                             cumFit = newFit;
