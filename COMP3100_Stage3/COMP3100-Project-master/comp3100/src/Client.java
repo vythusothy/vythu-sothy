@@ -10,7 +10,7 @@ public class Client{
         String method = "atl";
 
         String err = "Correct format: java Client OR java Client -a <method>. Type java Client -h for help.";
-        if(args.length == 1){
+        if(args.length == 6){
             if(args[0].equals("-h")){
                 System.out.println(err);
                 System.out.println("Methods: ff - first fit : bf - best fit : wf - worst fit : cf - cumulative fit  cf1 - cumulative fit1  cf2 - cumulative fit2 ");
